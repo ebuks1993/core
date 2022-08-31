@@ -6,17 +6,17 @@ from .models import Article
 from .forms import PostForm,RegisterForm
 
 # Create your views here.
-def index(request):
-    queryset = Article.objects.order_by('-id').select_related('author').all()
-    pageobj = Paginator(queryset,9)
-    page = request.GET.get('page')
-    pagelist = pageobj.get_page(page)
+# def index(request):
+#     queryset = Article.objects.order_by('-id').select_related('author').all()
+#     pageobj = Paginator(queryset,9)
+#     page = request.GET.get('page')
+#     pagelist = pageobj.get_page(page)
 
-    context = {
-            # 'posts':queryset,
-            'posts':pagelist
-        }
-    return render(request,'blog/index.html',context)
+#     context = {
+#             # 'posts':queryset,
+#             'posts':pagelist
+#         }
+#     return render(request,'blog/index.html',context)
 
 def post_detail(request,id):
     post = Article.objects.get(pk=id)
